@@ -188,13 +188,16 @@ npm run build
 
 Em um banco novo, a listagem de colaboradores retorna `[]`. `rh-db` é um atalho para o cliente MySQL com host, porta, usuário e banco do ambiente.
 
-Para iniciar somente o MySQL:
+Para iniciar somente o MySQL e garantir a criação do banco e do usuário:
 
-```sh
-devenv up mysql
-```
+    devenv up mysql
 
-Em outro terminal, execute a API manualmente com `npm run start:dev`. Para encerrar a execução em primeiro plano, use `Ctrl+C`. Se você optar por `devenv up -d` para iniciar serviços em segundo plano, encerre-os explicitamente com `devenv processes down`.
+Em outro terminal, configure o banco e execute a API manualmente:
+
+    devenv tasks run devenv:mysql:configure
+    npm run start:dev
+
+Para encerrar a execução em primeiro plano, use `Ctrl+C`. Se você optar por `devenv up -d` para iniciar serviços em segundo plano, encerre-os explicitamente com `devenv processes down`.
 
 **Sair da pasta descarrega o ambiente do terminal, mas não encerra processos já iniciados.** Encerrar os processos também não apaga os dados do banco.
 
